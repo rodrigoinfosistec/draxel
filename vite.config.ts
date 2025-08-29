@@ -17,7 +17,20 @@ export default defineConfig({
             formVariants: true,
         }),
     ],
+    
     esbuild: {
         jsx: 'automatic',
+    },
+
+    server: {
+        host: '0.0.0.0', // aceita conexões externas
+        port: 5173,
+        hmr: {
+            host: '127.0.0.1', // garante que o browser veja o host correto
+            port: 5173,
+        },
+        watch: {
+            usePolling: true, // necessário para WSL2/Docker
+        },
     },
 });
